@@ -1,8 +1,10 @@
 # Flask Role Based Access Control
-Basic structure for starting a Flask project with Jinja templates
+Basic structure for starting a Flask project with basic role based security.
 
 ---
 
+Create the database table
+---
 ```
 CREATE TABLE users (
     id INT(11) AUTO_INCREMENT PRIMARY KEY,
@@ -13,7 +15,9 @@ CREATE TABLE users (
     access INT(11), register_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     );
 ```
-Create the first admin user:
+
+Create the first admin user
+---
 
 1. Create the database table.
 
@@ -24,7 +28,7 @@ Create the first admin user:
 4. Log in to the application as this new user
 
 
-Install the application
+Use this template to start a new application
 ---
 1. Clone this repository to local computer
 
