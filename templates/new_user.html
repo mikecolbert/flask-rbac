@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<h1>New User</h1>
+<hr />
+{% from "includes/_formhelpers.html" import render_field %}
+<div>
+    <form action="" method="POST" id="new_user">
+        {{ form.csrf_token }}
+
+        {% if form %}
+
+        <div class="form-group">
+            <label>{{ form.name.label }}</label>
+            {{ form.name(class="form-control") }}
+            {% for error in form.name.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </div>
+
+        <div class="form-group">
+            <label>{{ form.email.label }}</label>
+            {{ form.email(class="form-control") }}
+            {% for error in form.email.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </div>
+
+        <div class="form-group">
+            <label>{{ form.username.label }}</label>
+            {{ form.username(class="form-control") }}
+            {% for error in form.username.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </div>
+
+        <fieldset>
+            <legend> Permissions: </legend>
+
+            <p>
+                <label for="user_level_access">
+                    <input type="radio" id="user_level_access" name="access_lvl" value="1"> User access
+                </label>
+            </p>
+            <p>
+                <label for="admin_level_access">
+                    <input type="radio" id="admin_level_access" name="access_lvl" value="2"> Admin access
+                </label>
+            </p>
+        </fieldset>
+
+   <hr/>
+        <div class="form-group">
+            <label>{{ form.password.label }}</label>
+            {{ form.password(size=32, class="form-control") }}
+            {% for error in form.password.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </div>
+    
+        <div class="form-group">
+            <label>{{ form.confirm.label }}</label>
+            {{ form.confirm(size=32, class="form-control") }}
+            {% for error in form.confirm.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </div>
+
+        {% endif %}
+    </form>
+
+    <button type="submit" form="new_user" formmethod="POST"
+        formaction="{{ url_for('new_user') }}" class="btn btn-primary">Create New User</button>
+
+
+</div>
+{% endblock %}

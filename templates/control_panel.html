@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block body %}
+  <h1>Admin Control Panel</h1>
+
+  <div>
+
+    {% if users %}
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                
+                <th>Name</th>
+                <th>E-mail</th>
+                <th>Username</th>
+                <th>Access Level</th>
+                <th><form action="{{ url_for('new_user') }}" method="GET">
+                  <input type="submit" value="New User" class="btn btn-primary" />
+              </form></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for row in users %}
+            <tr>
+                
+                <td> {{ row.name }}</td>
+                <td> {{ row.email }}</td>
+                <td> {{ row.username }}</td>
+                <td> 
+                  {% if row.access == 1 %} User
+                  {% elif row.access == 2 %} Admin
+                  {% else %} --
+                  {% endif %}
+
+                </td>
+                <td>
+                  <form action="{{ url_for('user_detail', user_id=row.id) }}" method="POST">
+                    <input type="submit" value="Details" class="btn btn-outline-primary btn-sm" />
+                </form>
+                </td>
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endif %}
+
+  </div>
+{% endblock %}

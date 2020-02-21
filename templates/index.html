@@ -1,0 +1,19 @@
+
+
+{% extends 'base.html' %}
+
+{% block body %}
+
+<div class="jumbotron text-center">
+    <h1>Welcome To Flask App</h1>
+	<p class="lead">This template demonstrates user login to a Flask application</p>
+  <p><a href="https://www.youtube.com/watch?v=zRwy8gtgJ1A">Python Flask From Scratch series</a></p>
+  <p><a href="https://blog.tecladocode.com/learn-python-defining-user-access-roles-in-flask/"> Defining User Access Levels in Flask</a></p>
+  <p><a href="https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-v-user-logins">Flask Mega-Tutorial</a></p>
+    {% if session.logged_in == NULL %}
+      <a href="/register" class="btn btn-primary btn-lg">Register</a>
+      <a href="/login" class="btn btn-success btn-lg">Login</a>
+    {% endif %}
+  </div>
+
+{% endblock %}

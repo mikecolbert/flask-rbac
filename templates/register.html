@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block body %}
+  <h1>Register</h1>
+  {% from "includes/_formhelpers.html" import render_field %}
+  <form action="" method="POST">
+    {{ form.hidden_tag() }}
+    
+    <div class="form-group">
+        <label>{{ form.name.label }}</label>
+        {{ form.name(size=32, class="form-control") }}
+        {% for error in form.name.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+    </div>
+
+    <div class="form-group">
+        <label>{{ form.email.label }}</label>
+        {{ form.email(size=64, class="form-control") }}
+        {% for error in form.email.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+    </div>
+
+    <div class="form-group">
+        <label>{{ form.username.label }}</label>
+        {{ form.username(size=32, class="form-control") }}
+        {% for error in form.username.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+    </div>
+
+    <div class="form-group">
+        <label>{{ form.password.label }}</label>
+        {{ form.password(size=32, class="form-control") }}
+        {% for error in form.password.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+    </div>
+
+    <div class="form-group">
+        <label>{{ form.confirm.label }}</label>
+        {{ form.confirm(size=32, class="form-control") }}
+        {% for error in form.confirm.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+    </div>
+    
+    <p>{{ form.submit(class="btn btn-primary") }}</p>
+  </form>
+{% endblock %}
